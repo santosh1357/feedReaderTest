@@ -61,6 +61,7 @@ $(function() {
           * visibility when the menu icon is clicked. This test
           * is testing two expectations: does the menu display when
           * clicked and does it hide when clicked again.
+          * We test it by checkin if body has class menu-hidden.
           */
         it('menu visibility change', function(){
             $('.menu-icon-link').click();
@@ -92,7 +93,9 @@ $(function() {
     describe('New Feed Selection', function(){
         /* A test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
-         *  loadFeed() is asynchronous.
+         * loadFeed() is asynchronous.
+         * We call loadFeed fun twice with diff ids and save the output
+         * and then test if the content of both the ids are different.
          */
         var currentFeed,
             oldFeed;
@@ -100,10 +103,8 @@ $(function() {
             beforeEach(function(done){
                     loadFeed(1, function(){
                         oldFeed = $('.feed').html();
-                        console.log("OF " + oldFeed);
                         loadFeed(0, function(){
                             currentFeed = $('.feed').html();
-                            console.log("cF " + currentFeed);
                             done();
                         });
                         done();    
