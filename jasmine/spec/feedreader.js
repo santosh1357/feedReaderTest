@@ -81,9 +81,7 @@ $(function() {
          * beforeEach and asynchronous done() function.
          */
         beforeEach(function(done){
-                loadFeed(0, function(){
-                    done();
-                });             
+                loadFeed(0, done);                               
         }); 
             it('loadFeed function result', function(done){ 
                 expect($('.feed').find('a.entry-link').length !== 0).toBeTruthy();
